@@ -15,7 +15,9 @@ export default function SingleProduct({ route, products }) {
     <div className="single-product">
       <img src={product.image} alt={product.category} />
       <div className="product-info">
-        <div className="title">{product.title}</div>
+        <div className="title">
+          <h4>{product.title}</h4>
+        </div>
         <div className="description">{product.description}</div>
         <div className="price">{product.price}</div>
         <button>add to cart</button>

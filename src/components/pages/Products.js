@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-export default function Products({ products, categories }) {
+export default function Products({ products, categories, addToCart }) {
   const [prodSort, setProdSort] = useState("default");
   const [prodFilter, setProdFilter] = useState(categories);
   const [searchValue, setsearchValue] = useState("");
@@ -17,6 +17,13 @@ export default function Products({ products, categories }) {
   } else if (prodSort === "z-a") {
     products.sort((a, b) => b.title.localeCompare(a.title));
   }
+
+  const truncate = (words, maxLength) => {
+    if (words.length > maxLength) {
+      return `${words.slice(0, maxLength)} …`;
+    }
+    return words;
+  };
 
   const handleChange = (e) => {
     prodFilter.includes(e.target.value)
@@ -52,13 +59,16 @@ export default function Products({ products, categories }) {
             <Link to={`/products/${product.id}`}>
               <img src={product.image} alt={product.category} />
               <div className="product-info">
-                <div className="title">{product.title}</div>
+                <div className="title">{truncate(product.title, 50)}</div>
+                <div className="description">
+                  {truncate(product.description, 40)}
+                </div>
                 <div className="price">${product.price}</div>
               </div>
             </Link>
           </div>
           <div className="add-cart">
-            <button>add to cart</button>
+            <button onClick={() => addToCart(product)}>Add to Cart</button>
           </div>
         </div>
       );

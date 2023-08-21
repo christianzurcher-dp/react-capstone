@@ -1,24 +1,66 @@
+body {
+  margin: 0px;
+}
+
 .App {
   a {
     text-decoration: none;
     color: #000;
   }
-  .nav-bar {
-    margin: 0px 200px;
+  .nav {
     display: flex;
-    justify-content: space-evenly;
-    a {
-      font-size: 20px;
+    background-color: #131921;
+    align-items: center;
+    justify-content: space-between;
+    img {
+      height: 40px;
+      margin-left: 5px;
     }
-    a:hover {
-      color: grey;
+    .nav-bar {
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      margin-right: 26%;
+      height: 50px;
+      align-items: center;
+      a {
+        color: white;
+        font-size: 20px;
+        margin: 0px 40px 0px 40px;
+      }
+      a:hover {
+        color: grey;
+      }
+    }
+  }
+  .home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 80vh;
+    align-items: center;
+    .button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 25px;
+      background-color: #ffd814;
+      height: 40px;
+      width: 150px;
+      box-shadow: 3px 3px 5px -3px rgba(0, 0, 0, 0.75);
+    }
+    .button:hover {
+      background-color: #f7ca01;
     }
   }
   .products {
     .sort-and-filter-container {
+      background-color: #242f3f;
+      color: white;
       display: flex;
       justify-content: space-between;
-      margin: 0px 40px 0px 20px;
+      padding-left: 30px;
+      padding-right: 60px;
       .sort-options {
         display: flex;
         align-items: center;
@@ -36,6 +78,7 @@
       }
     }
     .product-list {
+      margin-left: 10px;
       display: flex;
       flex-wrap: wrap;
       .product {
@@ -51,6 +94,7 @@
             max-width: 45%;
             max-height: 80%;
             margin-right: 10px;
+            object-fit: contain;
           }
           .product-info {
             width: 100%;
@@ -68,14 +112,33 @@
           }
         }
         a:hover {
-          .title {
+          .title,
+          .description {
             text-decoration: underline;
           }
         }
-        .buttons {
-          display: flex;
+        .add-cart {
+          button {
+            border: none;
+            border-radius: 25px;
+            background-color: #ffd814;
+            height: 40px;
+            width: 125px;
+            box-shadow: 3px 3px 5px -3px rgba(0, 0, 0, 0.75);
+          }
+          button:hover {
+            background-color: #f7ca01;
+            cursor: pointer;
+          }
         }
       }
+    }
+  }
+  .single-product {
+    display: flex;
+    background-color: #f7f7f7;
+    img {
+      max-width: 200px;
     }
   }
 }
