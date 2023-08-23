@@ -321,6 +321,18 @@ body {
   }
   .about {
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    width: 45%;
+
+    div {
+      padding: 20px;
+      margin: 10px;
+      background-color: #f7f7f7;
+      border-radius: 15px;
+    }
   }
   .footer {
     color: white;
