@@ -52,7 +52,6 @@ export default function Cart({
           </div>
           <div className="buttons">
             <button onClick={() => removeFromCart(product)}>-</button>
-            {console.log(itemQuantities)}
             <div className="quantity">{itemQuantities[product.id]}</div>
             <button onClick={() => addToCart(product)}>+</button>
           </div>
