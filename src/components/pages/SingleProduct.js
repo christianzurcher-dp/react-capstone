@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 
-export default function SingleProduct({ route, products }) {
+export default function SingleProduct({ route, products, addToCart }) {
   const [product, setProduct] = useState("");
 
   useEffect(() => {
-    products.map((prod) => {
+    products.forEach((prod) => {
       if (prod.id === parseInt(route.match.params.slug)) {
         setProduct(prod);
       }
@@ -16,11 +16,13 @@ export default function SingleProduct({ route, products }) {
       <img src={product.image} alt={product.category} />
       <div className="product-info">
         <div className="title">
-          <h4>{product.title}</h4>
+          <h2>{product.title}</h2>
         </div>
         <div className="description">{product.description}</div>
-        <div className="price">{product.price}</div>
-        <button>add to cart</button>
+        <div className="price">
+          <h2>${product.price?.toFixed(2)}</h2>
+        </div>
+        <button onClick={() => addToCart(product)}>Add to Cart</button>
       </div>
     </div>
   );

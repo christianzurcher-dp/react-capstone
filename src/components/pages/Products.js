@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Products({ products, categories, addToCart }) {
@@ -47,8 +47,6 @@ export default function Products({ products, categories, addToCart }) {
   });
 
   const renderProducts = products.map((product) => {
-    console.log(prodFilter);
-
     if (
       prodFilter.includes(product.category) &&
       product.title.includes(searchValue)
@@ -63,7 +61,7 @@ export default function Products({ products, categories, addToCart }) {
                 <div className="description">
                   {truncate(product.description, 40)}
                 </div>
-                <div className="price">${product.price}</div>
+                <div className="price">${product.price.toFixed(2)}</div>
               </div>
             </Link>
           </div>

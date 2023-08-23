@@ -7,11 +7,25 @@ import NavBar from "./components/nav/NavBar";
 import Products from "./components/pages/Products";
 import SingleProduct from "./components/pages/SingleProduct";
 import Cart from "./components/pages/Cart";
+import Footer from "./components/nav/Footer";
+import About from "./components/pages/About";
+import Contact from "./components/pages/Contact";
 
 export default function App() {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [cartItems, setCartItems] = useState([]);
+
+  const removeFromCart = (product) => {
+    const itemIndex = cartItems.findIndex((item) => item.id === product.id);
+    const updatedCartItems = [...cartItems];
+    updatedCartItems.splice(itemIndex, 1);
+    setCartItems(updatedCartItems);
+  };
+
+  const resetCart = () => {
+    setCartItems([]);
+  };
 
   useEffect(() => {
     const controller = new AbortController();
@@ -21,7 +35,7 @@ export default function App() {
       .then((data) => {
         setProducts(data);
         const filter = [];
-        data.map((product) => {
+        data.forEach((product) => {
           if (!filter.includes(product.category)) {
             filter.push(product.category);
           }
@@ -63,8 +77,22 @@ export default function App() {
               />
             )}
           />
-          <Route path="/cart" render={() => <Cart cartItems={cartItems} />} />
+          <Route
+            path="/cart"
+            render={() => (
+              <Cart
+                cartItems={cartItems}
+                products={products}
+                addToCart={(item) => setCartItems([...cartItems, item])}
+                removeFromCart={removeFromCart}
+                resetCart={() => setCartItems([])}
+              />
+            )}
+          />
+          <Route path="/contact" component={Contact} />
+          <Route path="/about" component={About} />
         </Switch>
+        <Footer />
       </BrowserRouter>
     </div>
   );
