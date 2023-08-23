@@ -31,7 +31,7 @@ export default function Cart({
   let shipping = 0;
   const renderCartItems = cartItems.map((product) => {
     subtotal += product.price;
-    subtotal < 100 ? (shipping = 0) : (shipping = subtotal * 0.1);
+    subtotal > 100 ? (shipping = 0) : (shipping = subtotal * 0.1);
     if (!itemIds.includes(product.id)) {
       itemIds.push(product.id);
       return (
