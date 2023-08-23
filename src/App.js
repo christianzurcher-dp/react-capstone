@@ -16,17 +16,6 @@ export default function App() {
   const [categories, setCategories] = useState([]);
   const [cartItems, setCartItems] = useState([]);
 
-  const removeFromCart = (product) => {
-    const itemIndex = cartItems.findIndex((item) => item.id === product.id);
-    const updatedCartItems = [...cartItems];
-    updatedCartItems.splice(itemIndex, 1);
-    setCartItems(updatedCartItems);
-  };
-
-  const resetCart = () => {
-    setCartItems([]);
-  };
-
   useEffect(() => {
     const controller = new AbortController();
 
@@ -44,6 +33,13 @@ export default function App() {
       });
     return () => controller.abort();
   }, []);
+
+  const removeFromCart = (product) => {
+    const itemIndex = cartItems.findIndex((item) => item.id === product.id);
+    const updatedCartItems = [...cartItems];
+    updatedCartItems.splice(itemIndex, 1);
+    setCartItems(updatedCartItems);
+  };
 
   return (
     <div className="App">
