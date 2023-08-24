@@ -352,3 +352,41 @@ body {
     }
   }
 }
+
+@media screen and (max-width: 1020px) {
+  .App {
+    .nav {
+      .nav-bar {
+        margin: 0px;
+        a {
+          margin: 0px 5px;
+          font-size: 15px;
+        }
+      }
+    }
+    .home {
+      h1 {
+        font-size: 28px;
+      }
+    }
+    .products {
+      .sort-and-filter-container {
+        flex-direction: column;
+        padding: 2px;
+        font-size: 12px;
+      }
+    }
+    .contact {
+      .submit-modal {
+        div {
+          padding: 5px;
+          font-size: 12px;
+          min-width: 200px;
+        }
+      }
+    }
+    .about {
+      width: 90%;
+    }
+  }
+}
