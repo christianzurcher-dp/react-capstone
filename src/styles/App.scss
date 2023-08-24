@@ -376,6 +376,15 @@ body {
         font-size: 12px;
       }
     }
+    .single-product {
+      flex-direction: column;
+      img {
+        max-width: 100px;
+      }
+      .product-info {
+        min-height: 600px;
+      }
+    }
     .contact {
       .submit-modal {
         div {
